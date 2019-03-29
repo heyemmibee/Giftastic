@@ -3,9 +3,9 @@ var emotions =["joy", "exhaustion", "terror", "angry", "thriller", "lmfao", "yas
 
 //create & add butts function
 function createButts()  {
-    $("#newButts").empty();
+    $("#currentButts").empty();
     for (var i = 0; i < emotions.length; i++)  {
-        $("#newButts").append('<button class="emotion-buttons btn btn-secondary">' + emotions[i] + '</button>');
+        $("#currentButts").append('<button class="emotion-buttons btn btn-secondary">' + emotions[i] + '</button>');
         }
     }
     
@@ -15,8 +15,6 @@ function createButts()  {
             "<button class='newButts btn btn-secondary' value="+newEmo+">"+newEmo+"</button>"
         )
     })
-
-    console.log(newEmo);
     
 //on click event for emotion buttons    
     $(document).on('click', '.emotion-buttons', function(event)    {
