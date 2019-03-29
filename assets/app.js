@@ -1,26 +1,105 @@
-//api_key=dc6zaTOxFJmzC
-//https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=cats"
+//initiate feeling butt(ons)s
+var emotions =["joy", "exhaustion", "terror", "angry", "thriller", "lmfao", "yas queen"];
 
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=dogs&limit=10";
+//create & add butts function
+function createButts()  {
+    $("#newButts").empty();
+    for (var i = 0; i < emotions.length; i++)  {
+        $("#newButts").append('<button class="emotion-buttons btn btn-secondary">' + emotions[i] + '</button>');
+        }
+    }
+    
+    $("#addEmotion").on("click", function() {
+        var newEmo = $("#createEmotion").val()
+        $("#newButts").append(
+            "<button class='newButts btn btn-secondary' value="+newEmo+">"+newEmo+"</button>"
+        )
+    })
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-  })
+    console.log(newEmo);
+    
+//on click event for emotion buttons    
+    $(document).on('click', '.emotion-buttons', function(event)    {
+        event.preventDefault();
+        $("#emoGifs").empty();
+        var emotion = this.innerText;
+        var APIKey = "9fjApbFAC67DMdK3yQT5EJhyifN3dMV7";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" + APIKey + "&limit=10&rating=g";
+    
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        
+        .then(function(response)  {
+            var results = response.data;
+            for (var i = 0; i < results.length; i++) {
 
- //put in object
- $(".gif").on("click", function() {
+                var image = $("<img>");
+                var imageDisplay = results[i].images.fixed_height.url;
+                image.attr("src", imageDisplay);
+                console.log(imageDisplay);
+                $("#emoGifs").append(image);
+                var rating = results[i].rating;
+                var parag = $("<p>").text("Rating: " + rating);
+        
+            $("#emoGifs").append(parag);
+            }
+        });
+        $("#emoGifs").empty();
+    });
+    createButts();
 
- .then(function(response) {
-     var results = response.data;
-     console.log(results);
 
-     for (var i = 0; i<results.length; i++) {
-         var image = $("<img>");
-         var imaging = results[i].images.downsized.url;
-         image.attr("src", imaging);
-         console.log(imaging);
-         $("#gifDiv1").append(image);
-     }
- })
+// function renderButts() {
+//     $("#newButts").empty();
+//     for (var i = 0; i < emotions.length; i++) {
+//         var a = $("<button>");
+//         a.addClass("emotion-btn btn btn-secondary");
+//         a.attr("data-name", emotions[i]);
+//         a.text(emotions[i]);
+//         console.log(emotions + a);
+//         $("#newButts").append(a);
+//     }
+// }
 
+// function displayGIF() {
+//     var emotion = $(this).attr("data-name");
+//     var APIKey = "9fjApbFAC67DMdK3yQT5EJhyifN3dMV7";
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + emotion + "&api_key=" + APIKey + "&limit=10&rating=g";
+
+//     $.ajax({
+//     url: queryURL,
+//     method: "GET"
+//     })
+    
+//     //put in object
+//      .then(function(response) {
+//          var results = response.data;
+//          console.log(results);
+//          for (var i = 0; i<results.length; i++) {
+//              var imageDiv = $("<div>");
+//              var rating = $("<p>").text("Rating: " + results[i].rating);
+//              var emoImage = $("<img>");
+//                 emoImage.addClass("gif");
+//                 emoImage.attr("src", results[i].images.fixed_height_still.url);
+//                 console.log(emoImage);
+//              imageDiv.append(emoImage);
+//              imageDiv.append(rating);
+//              $("#gifDiv1").append(emoImage);
+//          }}
+     
+
+ 
+//  //function for looping array of butts
+ 
+
+//  $("#searchButt").on("click", function(event) {
+//     event.preventDefault();
+//     var emotion = $("#searchForm").val().trim();
+//     emotions.push(emotion);
+//     renderButts();
+//  });
+// renderButts();
+
+//  })

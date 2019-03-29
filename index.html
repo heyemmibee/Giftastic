@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Giphy Project</title>
+    <title>Giphy API</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
-    <form>
-        <div class="form-group">
-          <label for="searchForm">Search Bar</label>
-          <input type="email" class="form-control" id="searchForm" aria-describedby="emailHelp" placeholder="Enter giphy">
+    <div class="jumbotron">How are you feeling?</div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header"><h5 class="card-title">Enter your own Emotion!</h5></div>
+                        <div class="card-body">
+                        <input type="text" class="form-control center" id="createEmotion" placeholder="Enter Feels..."><br>
+                        <button type="submit" class="btn btn-success" id="addEmotion">Submit</button>
+                        </div>
+                </div>
+            </div>
+            <div class="col-6">
+                    <div class="card">
+                        <div class="card-header"><h5 class="card-title">Click a Button to Feel Emotions!</h5></div>
+                            <div class="card-body">
+                                <div class="emotion-buttons">
+                                    <div id="currentButts"></div>
+                                    <div id="newButts"></div>
+                                </div>
+                            </div>
+                    </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary" id="searchButton">Submit</button>
-    </form>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="emoGifs"></div>
+            </div>
+        </div>
+    </div>
 
-    <div id="gifDiv1"></div>
-    <div id="gifDiv2"></div>
-
-    <div id="newButtons"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="./assets/app.js"> </script>
+    <script type="text/javascript" src="./assets/app.js"></script>
 </body>
 </html>
