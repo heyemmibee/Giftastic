@@ -5,6 +5,7 @@ Giftastic uses GIPHY API, Javascript, JQuery, HTML, Bootstrap and CSS to make a 
 ## Getting Started
 
 This application is able to be run locally via deployment link below:
+
 https://heyemmibee.github.io/Giftastic/
 
 ## Prerequisites
